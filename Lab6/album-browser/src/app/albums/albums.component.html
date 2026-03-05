@@ -1,0 +1,26 @@
+﻿<section class="page">
+  <div class="page-header">
+    <h1>Albums</h1>
+    <p class="muted">Browse all albums from JSONPlaceholder.</p>
+  </div>
+
+  <div *ngIf="isLoading()" class="loading">Loading albums...</div>
+  <div *ngIf="error()" class="error">{{ error() }}</div>
+
+  <ul *ngIf="!isLoading() && !error()" class="album-list">
+    <li *ngFor="let album of albums()" class="album-item">
+      <a class="album-link" [routerLink]="['/albums', album.id]">
+        <span class="album-id">#{{ album.id }}</span>
+        <span class="album-title">{{ album.title }}</span>
+      </a>
+      <button type="button" class="danger" (click)="onDelete(album, $event)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5z"/>
+          <path d="M8.5 5.5A.5.5 0 0 1 9 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5z"/>
+          <path d="M11.5 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 1 0z"/>
+          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1z"/>
+        </svg>
+      </button>
+    </li>
+  </ul>
+</section>
