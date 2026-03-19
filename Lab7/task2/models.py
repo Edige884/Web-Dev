@@ -11,7 +11,7 @@ class Person:
         return self.age
 
     def __str__(self):
-        return f"{self.name}, {self.age}, {self.city}"
+        return f"name={self.name}, age={self.age}, city={self.city}"
 
 
 class Student(Person):
@@ -23,7 +23,7 @@ class Student(Person):
         return self.university
 
     def __str__(self):
-        return f"Student(name={self.name}, age={self.age}, city={self.city}, university={self.university})"
+        return f"Student({super().__str__}, university={self.university})"
 
 
 class Teacher(Person):
@@ -35,4 +35,4 @@ class Teacher(Person):
         return self.subject
 
     def __str__(self):
-        return f"Teacher(name={self.name}, age={self.age}, city={self.city}, subject={self.subject})"
+        return f"Teacher(Student({super().__str__}, subject={self.subject})"
